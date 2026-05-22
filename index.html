@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physics Quiz</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <div class="quiz-container">
+
+    <h1>Quiz Physique 3AC</h1>
+    
+    <!-- ===================================
+     USER FORM
+     =================================== -->
+
+    <div id="user-form">
+
+      <input
+          type="text"
+          id="username"
+          placeholder="Votre nom">
+
+      <input
+          type="text"
+          id="userclass"
+          placeholder="Votre classe">
+
+      <button id="start-btn">
+
+       Commencer le Quiz
+
+      </button>
+    </div>
+    <!-- ===================================
+     QUIZ CONTENT
+    =================================== -->
+
+    <div id="quiz-content">
+
+      <div id="question"></div>
+
+      <div id="choices"></div>
+
+      <button id="next-btn">
+      Question suivante
+      </button>
+
+      <div id="score"></div>
+    
+    </div>
+
+  </div>
+
+  <script src="data/questions.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
