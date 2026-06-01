@@ -289,6 +289,18 @@ button {
 
 }
 
+/* =============================
+  Taille des formules MathJax
+==============================*/
+
+mjx-container {
+
+  font-size: 1em !important;
+
+  line-height: 1.2;
+
+}
+
 /* ===================================
    RESPONSIVE MOBILE
 =================================== 
