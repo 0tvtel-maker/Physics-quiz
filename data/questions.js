@@ -1,21 +1,21 @@
 const questions = [
   {
-    question: "La relation entre la vitesse (V), la distance (d) et le temps (t) est :",
+    question: "La relation entre la vitesse (\\(V\\)), la distance (\\(d\\)) et le temps (\\(t\\)) est :",
     choices: [
-      "V = t / d",
-      "V = d / t",
-      "V = d x t",
-      "d = V / t"
+      "\\(V = \\frac{t}{d}\\)",
+      "\\(V = \\frac{d}{t}\\)",
+      "\\(V = d \\times t\\)",
+      "\\(d = \\frac{V}{t}\\)"
     ],
     correct: 1
   },
   {
     question: "L'unité internationale de la vitesse moyenne est :",
     choices: [
-      "km/h",
-      "m/s",
-      "cm/s",
-      "m/h"
+      "\\(\\text{km/h}\\)",
+      "\\(\\text{m/s}\\)",
+      "\\(\\text{cm/s}\\)",
+      "\\(\\text{m/h}\\)"
     ],
     correct: 1
   },
@@ -110,22 +110,22 @@ const questions = [
     correct: 1
   },
   {
-    question: "La relation correcte entre l'intensité du poids (P), la masse (m) et l'intensité de pesanteur (g) s'écrit :",
+    question: "La relation correcte entre l'intensité du poids (\\(P\\)), la masse (\\(m\\)) et l'intensité de pesanteur (\\(g\\)) s'écrit :",
     choices: [
-      "P = m / g",
-      "P = g / m",
-      "P = m x g",
-      "m = P x g"
+      "\\(P = \\frac{m}{g}\\)",
+      "\\(P = \\frac{g}{m}\\)",
+      "\\(P = m \\times g\\)",
+      "\\(m = P \\times g\\)"
     ],
     correct: 2
   },
   {
     question: "L'unité internationale de l'intensité d'une force (ou du poids) est :",
     choices: [
-      "Le kilogramme (kg)",
-      "Le Joule (J)",
-      "Le Newton (N)",
-      "Le Watt (W)"
+      "Le kilogramme (\\(\\text{kg}\\))",
+      "Le Joule (\\(\\text{J}\\))",
+      "Le Newton (\\(\\text{N}\\))",
+      "Le Watt (\\(\\text{W}\\))"
     ],
     correct: 2
   },
@@ -140,7 +140,7 @@ const questions = [
     correct: 2
   },
   {
-    question: "L'intensité de pesanteur g d'un objet sur la Terre par rapport à celle sur la Lune est :",
+    question: "L'intensité de pesanteur \\(g\\) d'un objet sur la Terre par rapport à celle sur la Lune est :",
     choices: [
       "Différente de celle sur la Lune",
       "Identique à celle sur la Lune",
@@ -152,25 +152,25 @@ const questions = [
   {
     question: "L'énoncé de la loi d'Ohm pour un conducteur ohmique s'exprime par la relation :",
     choices: [
-      "U = R / I",
-      "U = R x I",
-      "I = U x R",
-      "R = U x I"
+      "\\(U = \\frac{R}{I}\\)",
+      "\\(U = R \\times I\\)",
+      "\\(I = U \\times R\\)",
+      "\\(R = U \\times I\\)"
     ],
     correct: 1
   },
   {
     question: "L'unité de la résistance électrique est :",
     choices: [
-      "L'Ohm (Ω)",
-      "Le Volt (V)",
-      "L'Ampère (A)",
-      "Le Watt (W)"
+      "L'Ohm (\\(\\Omega\\))",
+      "Le Volt (\\(\\text{V}\\))",
+      "L'Ampère (\\(\\text{A}\\))",
+      "Le Watt (\\(\\text{W}\\))"
     ],
     correct: 0
   },
   {
-    question: "La caractéristique d'un conducteur ohmique (courbe U en fonction de I) est :",
+    question: "La caractéristique d'un conducteur ohmique (courbe \\(U\\) en fonction de \\(I\\)) est :",
     choices: [
       "Une parabole",
       "Une droite qui ne passe pas par l'origine",
@@ -182,40 +182,40 @@ const questions = [
   {
     question: "L'unité internationale de la puissance électrique est :",
     choices: [
-      "Le Joule (J)",
-      "Le Kilowatt-heure (KWh)",
-      "Le Watt (W)",
-      "Le Volt-Ampère (VA)"
+      "Le Joule (\\(\\text{J}\\))",
+      "Le Kilowatt-heure (\\(\\text{KWh}\\))",
+      "Le Watt (\\(\\text{W}\\))",
+      "Le Volt-Ampère (\\(\\text{VA}\\))"
     ],
     correct: 2
   },
   {
-    question: "L'expression de la puissance électrique consommée par un appareil de chauffage de résistance R traversé par un courant I est :",
+    question: "L'expression de la puissance électrique consommée par un appareil de chauffage de résistance \\(R\\) traversé par un courant \\(I\\) est :",
     choices: [
-      "P = R x I",
-      "P = R x I²",
-      "P = U / I",
-      "P = R² x I"
+      "\\(P = R \\times I\\)",
+      "\\(P = R \\times I^2\\)",
+      "\\(P = \\frac{U}{I}\\)",
+      "\\(P = R^2 \\times I\\)"
     ],
     correct: 1
   },
   {
     question: "Pour éviter que le disjoncteur ne coupe automatiquement le courant de l'installation, il faut que :",
     choices: [
-      "Pt >= Pmax",
-      "Pt <= Pmax",
-      "Pt = Pmax",
-      "Pmax = 0"
+      "\\(P_t \\ge P_{\\text{max}}\\)",
+      "\\(P_t \\le P_{\\text{max}}\\)",
+      "\\(P_t = P_{\\text{max}}\\)",
+      "\\(P_{\\text{max}} = 0\\)"
     ],
     correct: 1
   },
   {
     question: "L'unité internationale de l'énergie électrique est :",
     choices: [
-      "Le Watt (W)",
-      "Le Watt-heure (Wh)",
-      "Le Joule (J)",
-      "Le Kilowatt-heure (KWh)"
+      "Le Watt (\\(\\text{W}\\))",
+      "Le Watt-heure (\\(\\text{Wh}\\))",
+      "Le Joule (\\(\\text{J}\\))",
+      "Le Kilowatt-heure (\\(\\text{KWh}\\))"
     ],
     correct: 2
   },
@@ -230,32 +230,32 @@ const questions = [
     correct: 1
   },
   {
-    question: "L'énergie consommée par un appareil de puissance P pendant une durée t est donnée par la relation :",
+    question: "L'énergie consommée par un appareil de puissance \\(P\\) pendant une durée \\(t\\) est donnée par la relation :",
     choices: [
-      "E = P / t",
-      "E = P x t",
-      "E = t / P",
-      "E = P + t"
+      "\\(E = \\frac{P}{t}\\)",
+      "\\(E = P \\times t\\)",
+      "\\(E = \\frac{t}{P}\\)",
+      "\\(E = P + t\\)"
     ],
     correct: 1
   },
   {
-    question: "Lorsqu'on convertit 1 KWh en Wh, on multiplie par :",
+    question: "Lorsqu'on convertit \\(1 \\text{ KWh}\\) en \\(\\text{Wh}\\), on multiplie par :",
     choices: [
-      "3600",
-      "60",
-      "1000",
-      "1.6"
+      "\\(3600\\)",
+      "\\(60\\)",
+      "\\(1000\\)",
+      "\\(1.6\\)"
     ],
     correct: 2
   },
   {
-    question: "Lorsqu'on convertit 1 Wh en Joules (J), on multiplie par :",
+    question: "Lorsqu'on convertit \\(1 \\text{ Wh}\\) en Joules (\\(J\\)), on multiplie par :",
     choices: [
-      "1000",
-      "3600",
-      "60",
-      "3.6"
+      "\\(1000\\)",
+      "\\(3600\\)",
+      "\\(60\\)",
+      "\\(3.6\\)"
     ],
     correct: 1
   },
@@ -280,12 +280,12 @@ const questions = [
     correct: 2
   },
   {
-    question: "Un corps solide soumis à deux forces F1 et F2 est en équilibre si :",
+    question: "Un corps solide soumis à deux forces \\(\\vec{F}_1\\) et \\(\\vec{F}_2\\) est en équilibre si :",
     choices: [
       "Les forces ont des directions différentes",
-      "F1 et F2 ont la même droite d'action, la même intensité et des sens opposés",
+      "\\(\\vec{F}_1\\) et \\(\\vec{F}_2\\) ont la même droite d'action, la même intensité et des sens opposés",
       "Les forces ont le même sens",
-      "La somme des intensités est nulle (F1 + F2 = 0)"
+      "La somme des intensités est nulle (\\(F_1 + F_2 = 0\\))"
     ],
     correct: 1
   },
@@ -300,4 +300,3 @@ const questions = [
     correct: 2
   }
 ];
-

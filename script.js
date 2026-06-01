@@ -38,49 +38,46 @@ let score = 0;
 
 
 // ===============================
-// عرض السؤال الحالي  FONCTIONS
+// FONCTIONS
 // ===============================
+
+  // عرض السؤال الحالي 
    
-  function handleAnswer(button,index,q){
+function handleAnswer(button,index,q){
 
-      // تعطيل جميع الأزرار بعد الاختيار
+  // تعطيل جميع الأزرار بعد الاختيار
 
-      const allButtons = choicesElement.querySelectorAll("button");
+  const allButtons = choicesElement.querySelectorAll("button");
 
 
-      allButtons.forEach(btn => {
+     allButtons.forEach(btn => {
 
        btn.disabled = true;
 
-       });
+    });
 
 
-     // ===============================
-     // الجواب الصحيح
-     // ===============================
+    // الجواب الصحيح
 
-      if (index === q.correct) {
+    if (index === q.correct) {
 
        score++;
 
        button.classList.add("correct");
 
-       } else {
+    } else {
 
        button.classList.add("wrong");
 
-
-       // ===============================
        // إظهار الجواب الصحيح
-       // ===============================
-
+     
         allButtons[q.correct].classList.add("correct");
 
-       }
-   }
+      }
+}
  // إنشاء الأزرار الخاصة بالاختيارات
 
-  function createChoiceButton(choice, index,q) {
+function createChoiceButton(choice, index,q) {
 
     // إنشاء زر جديد
 
@@ -89,7 +86,7 @@ let score = 0;
 
     // كتابة نص الاختيار
 
-    button.innerText = choice;
+    button.innerHTML = choice;
 
 
    // ===============================
@@ -103,7 +100,7 @@ let score = 0;
     });
 
     return button;
-  }
+}
 
 function showQuestion() {
 
@@ -114,8 +111,9 @@ function showQuestion() {
 
   // وضع نص السؤال داخل الصفحة
 
-  questionElement.innerText = q.question;
-
+  questionElement.innerHTML = q.question;
+ 
+  
 
   // حذف الاختيارات القديمة
 
@@ -155,6 +153,8 @@ function showQuestion() {
     choicesElement.appendChild(button);
 
  });
+
+ MathJax.typeset();
 
 }
 
@@ -301,7 +301,7 @@ nextButton.addEventListener("click", function () {
 
     // عرض النتيجة النهائية
 
-    questionElement.innerText = "Quiz terminé";
+    questionElement.innerHTML = "Quiz terminé";
 
     choicesElement.innerHTML = "";
 
