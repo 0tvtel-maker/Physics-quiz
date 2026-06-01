@@ -1,12 +1,16 @@
 // ===================================
-// Zone du quiz
+// HTML ELEMENTS
 // ===================================
+
+const questionElement = document.getElementById("question");
+
+const choicesElement = document.getElementById("choices");
+
+const nextButton = document.getElementById("next-btn");
+
+const scoreElement = document.getElementById("score");
 
 const quizContent = document.getElementById("quiz-content");
-
-// ===================================
-// Récupération des éléments utilisateur
-// ===================================
 
 const usernameInput = document.getElementById("username");
 
@@ -16,19 +20,192 @@ const startButton = document.getElementById("start-btn");
 
 const userForm = document.getElementById("user-form");
 
+
+
+// ===============================
+// متغيرات التطبيق  APP STATE
+// ===============================
+
+// رقم السؤال الحالي
+
+let currentQuestion = 0;
+
+
+// عدد النقاط
+
+let score = 0;
+
+
+
+// ===============================
+// عرض السؤال الحالي  FONCTIONS
+// ===============================
+   
+  function handleAnswer(button,index,q){
+
+      // تعطيل جميع الأزرار بعد الاختيار
+
+      const allButtons = choicesElement.querySelectorAll("button");
+
+
+      allButtons.forEach(btn => {
+
+       btn.disabled = true;
+
+       });
+
+
+     // ===============================
+     // الجواب الصحيح
+     // ===============================
+
+      if (index === q.correct) {
+
+       score++;
+
+       button.classList.add("correct");
+
+       } else {
+
+       button.classList.add("wrong");
+
+
+       // ===============================
+       // إظهار الجواب الصحيح
+       // ===============================
+
+        allButtons[q.correct].classList.add("correct");
+
+       }
+   }
+ // إنشاء الأزرار الخاصة بالاختيارات
+
+  function createChoiceButton(choice, index,q) {
+
+    // إنشاء زر جديد
+
+    const button = document.createElement("button");
+
+
+    // كتابة نص الاختيار
+
+    button.innerText = choice;
+
+
+   // ===============================
+   // عند الضغط على الاختيار
+   // ===============================
+
+    button.addEventListener("click", function () {
+
+    handleAnswer(button,index,q);
+
+    });
+
+    return button;
+  }
+
+function showQuestion() {
+
+  // جلب السؤال الحالي
+
+  const q = questions[currentQuestion];
+
+
+  // وضع نص السؤال داخل الصفحة
+
+  questionElement.innerText = q.question;
+
+
+  // حذف الاختيارات القديمة
+
+  choicesElement.innerHTML = "";
+
+  // إنشاء الأزرار الخاصة بالاختيارات
+
+   q.choices.forEach((choice, index) => {
+
+   const button = createChoiceButton(choice, index, q);
+
+    // ===============================
+    // عند الضغط على الزر
+    // ===============================
+
+   /* button.onclick = function () {
+
+      // التحقق من الجواب الصحيح
+
+      if (index === q.correct) {
+
+        score++;
+
+        alert("✅ Bonne réponse");
+
+      } else {
+
+        alert("❌ Mauvaise réponse");
+
+      }
+
+    };*/
+
+
+    // إضافة الزر داخل الصفحة
+
+    choicesElement.appendChild(button);
+
+ });
+
+}
+
+// ===================================
+// Mélanger les questions du quiz
+// ===================================
+
+function shuffleArray(array) {
+
+  // Boucle inversée sur le tableau
+
+  for (
+
+    let i = array.length - 1;
+
+    i > 0;
+
+    i--
+
+  ) {
+
+    // Générer un index aléatoire
+
+    const j = Math.floor(
+
+      Math.random() * (i + 1)
+
+    );
+
+
+    // Échanger les éléments
+
+    [array[i], array[j]] =
+
+    [array[j], array[i]];
+
+  }
+
+}
+
 // ===================================
 // Démarrage du Quiz
 // ===================================
 
-startButton.onclick = function () {
+startButton.addEventListener("click",function () {
 
   // Récupération des valeurs
 
-  const username =
-    usernameInput.value.trim();
+  const username = usernameInput.value.trim();
 
-  const userclass =
-    userclassInput.value.trim();
+  const userclass = userclassInput.value.trim();
 
 
   // ===================================
@@ -57,8 +234,7 @@ startButton.onclick = function () {
   // Gestion des visites
   // ===================================
 
-  let visits =
-    localStorage.getItem("visits");
+  let visits = localStorage.getItem("visits");
 
   if (visits === null) {
 
@@ -86,6 +262,11 @@ startButton.onclick = function () {
 
   quizContent.style.display = "block";
 
+  // ===================================
+  // Melanger les questions 
+  // ===================================
+
+  shuffleArray(questions);
 
   // ===================================
   // Lancer le quiz
@@ -93,193 +274,13 @@ startButton.onclick = function () {
 
   showQuestion();
 
-};
-
-
-
-// ===============================
-// جلب عناصر HTML
-// ===============================
-
-const questionElement = document.getElementById("question");
-
-const choicesElement = document.getElementById("choices");
-
-const nextButton = document.getElementById("next-btn");
-
-const scoreElement = document.getElementById("score");
-
-
-// ===============================
-// متغيرات التطبيق
-// ===============================
-
-// رقم السؤال الحالي
-
-let currentQuestion = 0;
-
-
-// عدد النقاط
-
-let score = 0;
-
-
-// ===============================
-// عرض السؤال الحالي
-// ===============================
-
-function showQuestion() {
-
-  // جلب السؤال الحالي
-
-  const q = questions[currentQuestion];
-
-
-  // وضع نص السؤال داخل الصفحة
-
-  questionElement.innerText = q.question;
-
-
-  // حذف الاختيارات القديمة
-
-  choicesElement.innerHTML = "";
-
-
-  // إنشاء الأزرار الخاصة بالاختيارات
-
-  q.choices.forEach((choice, index) => {
-
-    // إنشاء زر جديد
-
-    const button = document.createElement("button");
-
-
-    // كتابة نص الاختيار
-
-    button.innerText = choice;
-
-
-// ===============================
-// عند الضغط على الاختيار
-// ===============================
-
-button.onclick = function () {
-
-  // تعطيل جميع الأزرار بعد الاختيار
-
-  const allButtons = choicesElement.querySelectorAll("button");
-
-
-  allButtons.forEach(btn => {
-
-    btn.disabled = true;
-
-  });
-
-
-  // ===============================
-  // الجواب الصحيح
-  // ===============================
-
-  if (index === q.correct) {
-
-    score++;
-
-    button.style.backgroundColor = "green";
-
-  } else {
-
-    button.style.backgroundColor = "red";
-
-
-    // ===============================
-    // إظهار الجواب الصحيح
-    // ===============================
-
-    allButtons[q.correct].style.backgroundColor = "green";
-
-  }
-
-};   
-     // ===============================
-     // عند الضغط على الاختيار
-     // ===============================
-
-     button.onclick = function () {
-
-     // تعطيل جميع الأزرار بعد الاختيار
-
-     const allButtons = choicesElement.querySelectorAll("button");
-
-
-         allButtons.forEach(btn => {
-
-         btn.disabled = true;
-
-         });
-
-
-     // ===============================
-     // الجواب الصحيح
-     // ===============================
-
-        if (index === q.correct) {
-
-          score++;
-
-           button.style.backgroundColor = "green";
-
-        } else {
-
-            button.style.backgroundColor = "red";
-  
-
-         // ===============================
-         // إظهار الجواب الصحيح
-         // ===============================
-
-        allButtons[q.correct].style.backgroundColor = "green";
-
-  }
-
-};
-    // ===============================
-    // عند الضغط على الزر
-    // ===============================
-
-   /* button.onclick = function () {
-
-      // التحقق من الجواب الصحيح
-
-      if (index === q.correct) {
-
-        score++;
-
-        alert("✅ Bonne réponse");
-
-      } else {
-
-        alert("❌ Mauvaise réponse");
-
-      }
-
-    };*/
-
-
-    // إضافة الزر داخل الصفحة
-
-    choicesElement.appendChild(button);
-
-  });
-
-}
-
+});
 
 // ===============================
 // زر السؤال التالي
 // ===============================
 
-nextButton.onclick = function () {
+nextButton.addEventListener("click", function () {
 
   // الانتقال للسؤال التالي
 
@@ -317,11 +318,4 @@ nextButton.onclick = function () {
 
   }
 
-};
-
-
-// ===============================
-// تشغيل أول سؤال
-// ===============================
-
-showQuestion();
+});

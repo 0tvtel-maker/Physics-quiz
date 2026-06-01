@@ -275,6 +275,20 @@ button {
   touch-action: manipulation;
 
 }
+
+.correct {
+
+  background: green!important;
+
+}
+
+
+.wrong {
+
+  background: red!important;
+
+}
+
 /* ===================================
    RESPONSIVE MOBILE
 =================================== 
