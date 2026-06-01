@@ -279,6 +279,7 @@ button {
 .correct {
 
   background: green!important;
+  color: white;
 
 }
 
@@ -286,7 +287,7 @@ button {
 .wrong {
 
   background: red!important;
-
+  color: white;
 }
 
 /* =============================
