@@ -433,21 +433,38 @@ nextButton.addEventListener("click", function () {
   score + " / " + 
   currentQuestions.length;
 
-  // ===================================
-  // Débloquer groupe suivant
-  // =================================== 
-  
-  if ( score >= 7 && currentGroup < 11 ) { 
-    
-  // Nouveau groupe débloqué 
-  
-  unlockedGroup = currentGroup + 1; 
-  
-  // Sauvegarde locale
-  
-   localStorage.setItem( "unlockedGroup", unlockedGroup ); 
-  
-  } 
+
+// ===================================
+// Débloquer uniquement
+// le groupe suivant
+// ===================================
+
+if (
+  score >= 7 &&
+  currentGroup < 11
+) {
+
+  // Nouveau groupe débloqué
+
+  const nextGroup =
+    currentGroup + 1;
+
+  // Empêcher les sauts
+
+  if (nextGroup > unlockedGroup) {
+
+    unlockedGroup = nextGroup;
+
+    // Sauvegarde locale
+
+    localStorage.setItem(
+      "unlockedGroup",
+      unlockedGroup
+    );
+
+  }
+
+}
   
   // =================================== // 
   // Vider quiz 

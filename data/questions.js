@@ -6,7 +6,7 @@ const questions = [
     group: 1,
     lesson: "Le mouvement et le repos",
     difficulty: "easy",
-    question: "Pour déterminer le mouvement ou le repos d'un objet, il faut choisir un objet de référence appelé :",
+    question: "Pour déterminer le mouvement ou le repos d'un objet, il faut choisir un objet appelé :",
     choices: [
       "Un mouvement",
       "Un référentiel",
@@ -110,7 +110,7 @@ const questions = [
     group: 1,
     lesson: "Le mouvement et le repos",
     difficulty: "medium",
-    question: "Une trajectoire dont l'ensemble des positions successives forme une ligne courbe quelconque est :",
+    question: "Une trajectoire dont l'ensemble des positions successives forme une ligne quelconque est :",
     choices: [
       "Curviligne",
       "Rectiligne",
