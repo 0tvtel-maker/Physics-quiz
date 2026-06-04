@@ -20,7 +20,11 @@ const startButton = document.getElementById("start-btn");
 
 const userForm = document.getElementById("user-form");
 
+const groupsDashboard = document.getElementById("groups-dashboard"); 
 
+const groupsContainer = document.getElementById("groups-container");
+
+const backDashboardBtn = document.getElementById( "back-dashboard-btn" );
 
 // ===============================
 // متغيرات التطبيق  APP STATE
@@ -30,16 +34,115 @@ const userForm = document.getElementById("user-form");
 
 let currentQuestion = 0;
 
+let currentGroup = Number(localStorage.getItem("currentGroup")) || 1;
+
+let currentQuestions = [];
+
+let unlockedGroup = Number(localStorage.getItem("unlockedGroup")) || 1;
 
 // عدد النقاط
 
 let score = 0;
 
-
-
 // ===============================
 // FONCTIONS
 // ===============================
+
+// ===================================
+//  Gestion des écrans 
+// ===================================
+
+function showScreen(screen) {
+
+  userForm.style.display = "none";
+
+  groupsDashboard.style.display = "none";
+
+  quizContent.style.display = "none";
+
+  screen.style.display = "block";
+
+}
+
+function generateGroups() { 
+// Vider le container 
+groupsContainer.innerHTML = ""; 
+
+// Créer les 11 groupes 
+
+for (let i = 1; i <= 11; i++) { 
+  
+  // Création du bouton 
+  const button = document.createElement("button"); 
+  
+  // Texte 
+  
+  button.innerText = "Niveau " + i;
+
+  // Classe générale
+  
+  button.classList.add("group-btn"); 
+  
+ // =========================
+ // Groupe débloqué 
+ // ========================= 
+ 
+ if (i <= unlockedGroup) { 
+  button.classList.add( "group-unlocked" );
+  
+  // ========================= // 
+  // Click groupe // 
+  // ========================= 
+  
+  button.addEventListener( "click", function () { 
+    
+    // Groupe actuel 
+
+    currentGroup = i; 
+    
+    // Questions du groupe 
+    
+    currentQuestions = questions.filter( 
+      
+      q => q.group === currentGroup 
+    );
+     // Mélange 
+
+    shuffleArray(currentQuestions); 
+    
+    // Reset 
+     
+    currentQuestion = 0; score = 0; 
+    
+    // Afficher quiz 
+    
+    showScreen(quizContent);
+    
+    
+    // Star quiz
+    
+    showQuestion(); 
+  } 
+  );
+ } 
+ 
+ // ========================= 
+ // Groupe verrouillé  
+ // ========================= 
+
+ else {
+  
+  button.classList.add( "group-locked" ); 
+  
+  button.innerText += " 🔒";
+
+} 
+
+// Ajouter bouton 
+
+  groupsContainer.appendChild(button); 
+} 
+}
 
   // عرض السؤال الحالي 
    
@@ -106,7 +209,7 @@ function showQuestion() {
 
   // جلب السؤال الحالي
 
-  const q = questions[currentQuestion];
+  const q = currentQuestions[currentQuestion];
 
 
   // وضع نص السؤال داخل الصفحة
@@ -256,25 +359,32 @@ startButton.addEventListener("click",function () {
   userForm.style.display = "none";
 
 
-  // ===================================
-  // Afficher le quiz
-  // ===================================
+// ===================================
+// Afficher dashboard
+// ===================================
 
-  quizContent.style.display = "block";
+showScreen(groupsDashboard);
 
-  // ===================================
-  // Melanger les questions 
-  // ===================================
+// Générer les groupes
 
-  shuffleArray(questions);
+generateGroups();
 
-  // ===================================
-  // Lancer le quiz
-  // ===================================
-
-  showQuestion();
 
 });
+
+
+// =================================== 
+//  Retour dashboard 
+// =================================== 
+ 
+backDashboardBtn.addEventListener( "click", function () { 
+  
+  showScreen(groupsDashboard);
+
+   // Régénérer groupes 
+
+generateGroups();
+ } );
 
 // ===============================
 // زر السؤال التالي
@@ -291,7 +401,7 @@ nextButton.addEventListener("click", function () {
   // هل انتهت الأسئلة ؟
   // ===============================
 
-  if (currentQuestion < questions.length) {
+  if (currentQuestion < currentQuestions.length) {
 
     // عرض السؤال التالي
 
@@ -300,22 +410,68 @@ nextButton.addEventListener("click", function () {
   } else {
 
     // عرض النتيجة النهائية
+    
+    // ===================================  
+    //  Déblocage du groupe suivant 
+    // ===================================
 
-    questionElement.innerHTML = "Quiz terminé";
+      if (score >= 7) { 
+      
+       currentGroup++; 
+       
+       localStorage.setItem( "currentGroup", currentGroup ); 
+      
+      }
 
-    choicesElement.innerHTML = "";
+  // ===================================  
+  // Fin du groupe 
+  // =================================== 
+  
+  // Affichage score 
+  
+  scoreElement.innerText = "Votre score : " + 
+  score + " / " + 
+  currentQuestions.length;
 
-    nextButton.style.display = "none";
-
-
-    // عرض النقاط
-
-    scoreElement.innerText =
-      "Votre score : " +
-      score +
-      " / " +
-      questions.length;
+  // ===================================
+  // Débloquer groupe suivant
+  // =================================== 
+  
+  if ( score >= 7 && currentGroup < 11 ) { 
+    
+  // Nouveau groupe débloqué 
+  
+  unlockedGroup = currentGroup + 1; 
+  
+  // Sauvegarde locale
+  
+   localStorage.setItem( "unlockedGroup", unlockedGroup ); 
+  
+  } 
+  
+  // =================================== // 
+  // Vider quiz 
+  // =================================== 
+  
+  questionElement.innerHTML = "";
+  choicesElement.innerHTML = "";
+    
+  
+  // ===================================
+  //  Afficher dashboard
+  //  =================================== 
+ 
+  showScreen(groupsDashboard);
+ 
+  // =================================== 
+  // Régénérer dashboard 
+  // =================================== 
+   
+  generateGroups();
 
   }
 
 });
+
+currentQuestion = 0;
+score = 0;

@@ -302,50 +302,77 @@ mjx-container {
 
 }
 
-/* ===================================
-   RESPONSIVE MOBILE
-=================================== 
+/* ========================= */
+/* Dashboard Groupes */
+/* ========================= */
+#groups-dashboard { 
 
-@media (max-width: 768px) {
+    display: none; 
+    margin-top: 20px; 
+    text-align: center; 
+}
+  
+#groups-dashboard h2 {
 
-  body {
+     margin-bottom: 20px; 
+    
+} 
+    
+#groups-container { 
+  
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: 15px; 
+}
 
-    padding: 10px;
+.group-btn { 
 
-    align-items: flex-start;
+  width: 120px; 
+  padding: 15px; 
+  border: none; 
+  border-radius: 12px; 
+  font-size: 18px; 
+  cursor: pointer; 
+  transition: 0.3s; 
 
-  }
+} 
 
-  .quiz-container {
+.group-btn:hover { 
+  transform: scale(1.05); 
+}
 
-    padding: 20px;
+.group-unlocked { 
 
-    border-radius: 15px;
+  background: #4CAF50; 
+  color: white; 
+}
 
-    margin-top: 20px;
+.group-locked { 
+  background: #999; 
+  color: white; 
+  cursor: not-allowed; 
+  opacity: 0.7; 
+}
 
-  }
+/* ========================= */ 
+/* Bouton retour dashboard */
+/* ========================= */ 
 
-  h1 {
+#back-dashboard-btn { 
 
-    font-size: 1.5rem;
+  margin-bottom: 20px; 
+  padding: 10px 15px; 
+  border: none; 
+  border-radius: 10px; 
+  background: #222; 
+  color: white; 
+  cursor: pointer; 
+  font-size: 16px; 
+  transition: 0.3s;
+  
+ } 
 
-  }
-
-  #question {
-
-    font-size: 1.1rem;
-
-  }
-
-  #choices button,
-  #next-btn,
-  #start-btn {
-
-    font-size: 1rem;
-
-    padding: 14px;
-
-  }
-
-}*/
+#back-dashboard-btn:hover { 
+  opacity: 0.8; 
+}
