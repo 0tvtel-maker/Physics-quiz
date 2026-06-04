@@ -36,6 +36,8 @@ let currentQuestion = 0;
 
 let currentGroup = Number(localStorage.getItem("currentGroup")) || 1;
 
+let playedGroup = 1;
+
 let currentQuestions = [];
 
 let unlockedGroup = Number(localStorage.getItem("unlockedGroup")) || 1;
@@ -99,6 +101,12 @@ for (let i = 1; i <= 11; i++) {
     // Groupe actuel 
 
     currentGroup = i; 
+    
+// ===================================
+// Sauvegarder groupe joué
+// ===================================
+
+     playedGroup = i;
     
     // Questions du groupe 
     
@@ -441,13 +449,13 @@ nextButton.addEventListener("click", function () {
 
 if (
   score >= 7 &&
-  currentGroup < 11
+  playedGroup < 11
 ) {
 
   // Nouveau groupe débloqué
 
   const nextGroup =
-    currentGroup + 1;
+    playedGroup + 1;
 
   // Empêcher les sauts
 

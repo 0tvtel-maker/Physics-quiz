@@ -183,7 +183,7 @@ const questions = [
     choices: [
       "Un segment simple",
       "Un cercle",
-      "Un vecteur force",
+      "Un vecteur ",
       "Un tableau"
     ],
     correct: 2
@@ -261,7 +261,7 @@ const questions = [
     choices: [
       "Dynamique",
       "Relatif",
-      "Statique (déformation)",
+      "Statique ",
       "Magnétique"
     ],
     correct: 2
@@ -620,7 +620,7 @@ const questions = [
     group: 5,
     lesson: "Notion de force",
     difficulty: "medium",
-    question: "La droite d'action (direction) d'une force peut être :",
+    question: "La droite d'action d'une force peut être :",
     choices: [
       "Verticale, horizontale ou oblique",
       "Uniquement verticale",
@@ -836,7 +836,7 @@ const questions = [
     group: 7,
     lesson: "Le poids et la masse",
     difficulty: "easy",
-    question: "L'intensité internationale de l'intensité du poids est :",
+    question: "L'unité internationale de l'intensité du poids est :",
     choices: [
       "Le kilogramme (\\(\\text{kg}\\))",
       "Le Newton (\\(\\text{N}\\))",
@@ -1318,7 +1318,7 @@ const questions = [
     difficulty: "hard",
     question: "Un four électrique de puissance \\(2000 \\text{ W}\\) fonctionne pendant une durée \\(t = 3 \\text{ heures}\\). Son énergie consommée est :",
     choices: [
-      "\\(6000 \\text{ Wh} \\text{ (soit 6 kWh)}\\)",
+      "\\(6000 \\text{ Wh} \\)",
       "\\(666.7 \\text{ Wh}\\)",
       "\\(600 \\text{ Wh}\\)",
       "\\(60000 \\text{ Wh}\\)"
@@ -1332,7 +1332,7 @@ const questions = [
     question: "Le TGV Al Boraq roule à une vitesse de \\(320 \\text{ km/h}\\). Combien de temps met-il pour faire un trajet de \\(160 \\text{ km}\\) ?",
     choices: [
       "\\(2 \\text{ h}\\)",
-      "\\(0.5 \\text{ h} \\text{ (soit 30 minutes)}\\)",
+      "\\(0.5 \\text{ h}\\)",
       "\\(0.25 \\text{ h}\\)",
       "\\(1 \\text{ h}\\)"
     ],
