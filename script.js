@@ -4,6 +4,10 @@
 
 const questionElement = document.getElementById("question");
 
+const questionCounter = document.getElementById("question-counter");
+
+const quizProgressBar = document.getElementById("quiz-progress-bar");
+
 const choicesElement = document.getElementById("choices");
 
 const nextButton = document.getElementById("next-btn");
@@ -23,6 +27,12 @@ const userForm = document.getElementById("user-form");
 const groupsDashboard = document.getElementById("groups-dashboard"); 
 
 const groupsContainer = document.getElementById("groups-container");
+// Progression elements 
+const progressText = document.getElementById( "progress-text" ); 
+
+const progressBar = document.getElementById( "progress-bar" ); 
+// Score global 
+const globalScore = document.getElementById( "global-score" );
 
 const backDashboardBtn = document.getElementById( "back-dashboard-btn" );
 
@@ -33,26 +43,60 @@ const backDashboardBtn = document.getElementById( "back-dashboard-btn" );
 // رقم السؤال الحالي
 
 let currentQuestion = 0;
-
-let currentGroup = Number(localStorage.getItem("currentGroup")) || 1;
-
 let playedGroup = 1;
-
 let currentQuestions = [];
+let score = 0;
 
 let unlockedGroup = Number(localStorage.getItem("unlockedGroup")) || 1;
 
-// عدد النقاط
+//  Scores des groupes 
 
-let score = 0;
+let groupScores = JSON.parse(localStorage.getItem( "groupScores" )) || {};
+
+// Nombre total des groupes
+
+const totalGroups = Math.max( ...questions.map( q => q.group ));
+
 
 // ===============================
 // FONCTIONS
 // ===============================
 
-// ===================================
+// Mise à jour progression 
+
+function updateProgress() {
+
+  // Progression générale 
+  
+  const generalProgress = Math.floor(
+    
+    ((unlockedGroup - 1) / totalGroups) * 100
+  ); 
+   
+  // Texte progression 
+   
+  progressText.innerText = "Progression générale : " + generalProgress + "%"; 
+  
+  // Barre progression 
+  
+  progressBar.style.width = generalProgress + "%"; 
+
+  // Calcul score général 
+  
+  let totalScore = 0; 
+      
+  for (const key in groupScores) { 
+
+    totalScore += groupScores[key];
+
+  } 
+  // Affichage score général 
+  
+  globalScore.innerText = "Score global : " + totalScore;
+
+}
+
 //  Gestion des écrans 
-// ===================================
 
 function showScreen(screen) {
 
@@ -70,16 +114,28 @@ function generateGroups() {
 // Vider le container 
 groupsContainer.innerHTML = ""; 
 
-// Créer les 11 groupes 
+// Mise à jour progression 
 
-for (let i = 1; i <= 11; i++) { 
+updateProgress();
+
+
+// Boucle groupes
+
+
+for ( let i = 1; i <= totalGroups; i++) { 
   
   // Création du bouton 
   const button = document.createElement("button"); 
   
+  // Score groupe 
+  
+  const groupScore = groupScores[i] || 0;
+  
   // Texte 
   
-  button.innerText = "Niveau " + i;
+  button.innerText = "Niveau " + i+
+  
+  " • " + groupScore + "/10";
 
   // Classe générale
   
@@ -98,10 +154,6 @@ for (let i = 1; i <= 11; i++) {
   
   button.addEventListener( "click", function () { 
     
-    // Groupe actuel 
-
-    currentGroup = i; 
-    
 // ===================================
 // Sauvegarder groupe joué
 // ===================================
@@ -112,7 +164,7 @@ for (let i = 1; i <= 11; i++) {
     
     currentQuestions = questions.filter( 
       
-      q => q.group === currentGroup 
+      q => q.group === playedGroup 
     );
      // Mélange 
 
@@ -120,8 +172,8 @@ for (let i = 1; i <= 11; i++) {
     
     // Reset 
      
-    currentQuestion = 0; score = 0; 
-    
+    resetQuiz();
+
     // Afficher quiz 
     
     showScreen(quizContent);
@@ -176,15 +228,19 @@ function handleAnswer(button,index,q){
 
        button.classList.add("correct");
 
-    } else {
+     } else {
 
-       button.classList.add("wrong");
+     button.classList.add("wrong");
 
-       // إظهار الجواب الصحيح
+     // إظهار الجواب الصحيح
      
-        allButtons[q.correct].classList.add("correct");
+     allButtons[q.correct].classList.add("correct");
 
-      }
+    }
+
+  // Activer bouton suivant
+
+  nextButton.disabled = false;
 }
  // إنشاء الأزرار الخاصة بالاختيارات
 
@@ -213,18 +269,53 @@ function createChoiceButton(choice, index,q) {
     return button;
 }
 
+// Réinitialisation du quiz
+
+function resetQuiz() {
+
+  // Question actuelle
+
+  currentQuestion = 0;
+
+  // Score
+
+  score = 0;
+
+}
 function showQuestion() {
 
   // جلب السؤال الحالي
 
   const q = currentQuestions[currentQuestion];
 
+  // Affichage compteur
+
+  questionCounter.innerText = "Q: " + 
+  (currentQuestion + 1) +
+  " / " +
+  currentQuestions.length;
+
+
+// Progression quiz
+
+
+const progress =
+  (
+    (currentQuestion + 1) /
+    currentQuestions.length
+  ) * 100;
+
+quizProgressBar.style.width =
+  progress + "%";
 
   // وضع نص السؤال داخل الصفحة
 
   questionElement.innerHTML = q.question;
  
-  
+  // Désactiver bouton suivant
+
+
+   nextButton.disabled = true;
 
   // حذف الاختيارات القديمة
 
@@ -269,23 +360,13 @@ function showQuestion() {
 
 }
 
-// ===================================
 // Mélanger les questions du quiz
-// ===================================
 
 function shuffleArray(array) {
 
   // Boucle inversée sur le tableau
 
-  for (
-
-    let i = array.length - 1;
-
-    i > 0;
-
-    i--
-
-  ) {
+  for ( let i = array.length - 1; i > 0; i-- ) {
 
     // Générer un index aléatoire
 
@@ -404,7 +485,6 @@ nextButton.addEventListener("click", function () {
 
   currentQuestion++;
 
-
   // ===============================
   // هل انتهت الأسئلة ؟
   // ===============================
@@ -417,39 +497,30 @@ nextButton.addEventListener("click", function () {
 
   } else {
 
-    // عرض النتيجة النهائية
-    
-    // ===================================  
-    //  Déblocage du groupe suivant 
-    // ===================================
-
-      if (score >= 7) { 
-      
-       currentGroup++; 
-       
-       localStorage.setItem( "currentGroup", currentGroup ); 
-      
-      }
-
   // ===================================  
   // Fin du groupe 
   // =================================== 
   
-  // Affichage score 
+    //  Sauvegarder score du groupe 
   
+  
+  groupScores[playedGroup] = score;
+  
+  localStorage.setItem( 
+    
+    "groupScores", JSON.stringify(groupScores) 
+  
+  );
+
   scoreElement.innerText = "Votre score : " + 
   score + " / " + 
   currentQuestions.length;
 
-
-// ===================================
-// Débloquer uniquement
-// le groupe suivant
-// ===================================
+// Débloquer uniquement le groupe suivant
 
 if (
   score >= 7 &&
-  playedGroup < 11
+  playedGroup < totalGroups
 ) {
 
   // Nouveau groupe débloqué
@@ -487,7 +558,9 @@ if (
   //  =================================== 
  
   showScreen(groupsDashboard);
- 
+  
+  resetQuiz();
+
   // =================================== 
   // Régénérer dashboard 
   // =================================== 
@@ -497,6 +570,3 @@ if (
   }
 
 });
-
-currentQuestion = 0;
-score = 0;

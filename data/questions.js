@@ -86,10 +86,10 @@ const questions = [
     difficulty: "easy",
     question: "Le conducteur ohmique est un dipôle caractérisé par une grandeur physique appelée :",
     choices: [
-      "La tension",
-      "L'intensité",
-      "La résistance électrique (R)",
-      "La puissance"
+      "La tension électrique",
+      "L'intensité électrique",
+      "La résistance électrique",
+      "La puissance électrique"
     ],
     correct: 2
   },
@@ -486,7 +486,7 @@ const questions = [
     group: 4,
     lesson: "Les actions mécaniques",
     difficulty: "medium",
-    question: "Une action de contact s'exerçant sur une surface très petite (assimilée à un point) est une action :",
+    question: "Une action de contact s'exerçant sur une surface très petite est une action :",
     choices: [
       "Répartie",
       "À distance",
@@ -757,7 +757,7 @@ const questions = [
     question: "Le sens du poids d'un solide est toujours dirigé :",
     choices: [
       "Vers le haut",
-      "De \\(G\\) vers le bas (vers le centre de la Terre)",
+      "De \\(G\\) vers le bas",
       "Vers la gauche",
       "Vers la droite"
     ],
@@ -866,7 +866,7 @@ const questions = [
     choices: [
       "De contact répartie",
       "De contact localisée",
-      "À distance (toujours répartie)",
+      "À distance répartie",
       "À distance localisée"
     ],
     correct: 2
@@ -1095,7 +1095,7 @@ const questions = [
     choices: [
       "De la forme géométrique du solide",
       "De la température de l'objet",
-      "Du lieu (latitude) et de la hauteur (altitude)",
+      "Du lieu et de la altitude",
       "De l'instrument de mesure utilisé"
     ],
     correct: 2
