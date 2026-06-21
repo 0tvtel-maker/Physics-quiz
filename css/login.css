@@ -1,0 +1,128 @@
+/* =================================== */
+/* PAGE LOGIN */
+/* =================================== */
+
+.login-page {
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 20px;
+
+  background:linear-gradient( 135deg, #dbeafe, #bfdbfe );
+
+}
+
+/* =================================== */
+/* TITRE */
+/* =================================== */
+
+.login-page h1 {
+
+  font-size: 2rem;
+
+  margin-bottom: 10px;
+
+  text-align: center;
+
+}
+
+/* =================================== */
+/* INPUTS */
+/* =================================== */
+
+.login-page input {
+
+  width: 100%;
+
+  max-width: 350px;
+
+  padding: 14px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+
+}
+
+/* =================================== */
+/* BOUTON */
+/* =================================== */
+
+#save-user-btn {
+
+  width: 100%;
+
+  max-width: 350px;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: white;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+}
+
+#save-user-btn:hover {
+
+  background: #1d4ed8;
+
+}
+
+.logo-box {
+
+  font-size: 70px;
+
+  margin-bottom: 15px;
+
+}
+
+.login-card {
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+  max-width: 400px;
+
+  width: 100%;
+
+  text-align: center;
+
+}
+
+.hero-description {
+
+  text-align: center;
+
+  color: #64748b;
+
+  margin-bottom: 25px;
+
+}
+

@@ -2,104 +2,54 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="google-site-verification" content="googleb815a59229a86363.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Physics Quiz</title>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="css/login.css">
+  <title>Plateforme Éducative</title>
+  <meta name="description"
+    content=" Résumés interactifs et quiz de physique 3AC Maroc pour préparer l'examen régional.">
 </head>
-
 <body>
-  
-  <div class="quiz-container">
+  <main class="login-page">
 
-    <h1>Quiz Physique 3AC</h1>
-    
-    <!-- ===================================
-     USER FORM
-     =================================== -->
+  <div class="login-card">
 
-    <div id="user-form">
+    <div class="logo-box"> 🎓 </div>
 
-      <input
-          type="text"
-          id="username"
-          placeholder="Votre nom">
+    <h1> Plateforme Éducative </h1>
 
-      <input
-          type="text"
-          id="userclass"
-          placeholder="Votre classe">
+    <p class="hero-description">
 
-      <button id="start-btn">
+ Révisez la physique 3AC grâce à des
+résumés structurés et des quiz
+progressifs adaptés au programme
+marocain.
 
-       Commencer le Quiz
+      Révisions • Résumés • Quiz
 
-      </button>
-    </div>
+    </p>
 
-    <!-- ========================= -->
-    <!-- Dashboard des Groupes -->
-    <!-- ========================= -->
+    <input
+      id="username-input"
+      type="text"
+      placeholder="Nom"
+    >
 
-     <div id="groups-dashboard">
+    <input
+      id="userclass-input"
+      type="text"
+      placeholder="Classe"
+    >
 
-      <h2>Choisissez un niveau</h2>
+    <button id="save-user-btn">
 
-      <!-- ========================= --> 
-      <!-- Progression Générale --> 
-      <!-- ========================= -->
-       
-       <div id="progress-section"> 
-        <p id="progress-text"> Progression : 0% </p>
-        
-        <div id="progress-bar-container"> 
-          <div id="progress-bar"></div> 
-        </div> 
+      Commencer
 
-        <p id="global-score"> Score global : 0 </p>
-
-      </div>
-      <div id="groups-container"> </div>
-    </div>
-
-    <!-- ===================================
-     QUIZ CONTENT
-    =================================== -->
-
-    <div id="quiz-content"style="display:none;">
-
-      <div id="quiz-progress-container">
-
-        <div id="quiz-progress-bar">
-
-          <span id="question-counter"> 1 / 10 </span>
-       </div>
-
-      </div>
-
-      <div id="question"></div>
-
-      <div id="choices"></div>
-
-      <button id="next-btn">
-      Question suivante
-      </button>
-
-      <div id="score"></div>
-
-      <button id="back-dashboard-btn"> 
-        
-        ←
-
-       </button>
-      
-    </div>
+    </button>
 
   </div>
 
-  <script src="data/questions.js"></script>
-  <script src="script.js"></script>
-
+</main>
+  <script src="js/auth.js"></script>
 </body>
 </html>

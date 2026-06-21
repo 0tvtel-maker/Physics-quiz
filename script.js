@@ -2,7 +2,7 @@
 // HTML ELEMENTS
 // ===================================
 
-const questionElement = document.getElementById("question");
+/*const questionElement = document.getElementById("question");
 
 const questionCounter = document.getElementById("question-counter");
 
@@ -16,14 +16,6 @@ const scoreElement = document.getElementById("score");
 
 const quizContent = document.getElementById("quiz-content");
 
-const usernameInput = document.getElementById("username");
-
-const userclassInput = document.getElementById("userclass");
-
-const startButton = document.getElementById("start-btn");
-
-const userForm = document.getElementById("user-form");
-
 const groupsDashboard = document.getElementById("groups-dashboard"); 
 
 const groupsContainer = document.getElementById("groups-container");
@@ -36,6 +28,76 @@ const globalScore = document.getElementById( "global-score" );
 
 const backDashboardBtn = document.getElementById( "back-dashboard-btn" );
 
+const startLayer = document.getElementById("start-layer");
+
+const dashboardLayer = document.getElementById("dashboard-layer");
+
+const homeUsernameInput = document.getElementById( "username-input" );
+
+const homeUserclassInput = document.getElementById("userclass-input");
+
+const saveUserBtn = document.getElementById( "save-user-btn" );
+
+const username = localStorage.getItem( "username" );
+
+const storedUsername = localStorage.getItem( "username" );
+
+const storedUserclass = localStorage.getItem( "userclass" );
+
+
+if ( homeUsernameInput && homeUserclassInput && saveUserBtn) {
+
+  saveUserBtn.addEventListener( "click", function () {
+
+      // Lire données
+
+      const username =
+      homeUsernameInput.value;
+
+      const userclass =
+      homeUserclassInput.value;
+
+      // Vérification
+
+      if ( username === "" || userclass === "" ) {
+
+        alert(
+          "Complétez les informations"
+        );
+
+        return;
+
+      }
+
+      // Sauvegarde locale
+
+      localStorage.setItem( "username", username );
+
+      localStorage.setItem( "userclass", userclass );
+
+      // Masquer start
+
+      if (startLayer) { 
+        
+        startLayer.style.display = "none";
+
+      }
+
+      if (dashboardLayer) {
+
+        dashboardLayer.style.display = "block";
+      }
+        window.location.href = "quiz.html";
+    }
+  );
+
+}
+
+if ( window.location.pathname .includes("quiz.html") && ( !storedUsername || !storedUserclass) ) {
+
+  window.location.href = "index.html";
+
+}
 // ===============================
 // متغيرات التطبيق  APP STATE
 // ===============================
@@ -55,8 +117,12 @@ let groupScores = JSON.parse(localStorage.getItem( "groupScores" )) || {};
 
 // Nombre total des groupes
 
-const totalGroups = Math.max( ...questions.map( q => q.group ));
+const totalGroups = typeof questions !== "undefined"
 
+? Math.max( ...questions.map(  q => q.group )
+  )
+
+: 0;
 
 // ===============================
 // FONCTIONS
@@ -99,18 +165,28 @@ function updateProgress() {
 //  Gestion des écrans 
 
 function showScreen(screen) {
+  
+  if (groupsDashboard) {
+    groupsDashboard.style.display = "none";
+  }
 
-  userForm.style.display = "none";
+  if (quizContent) {
+    quizContent.style.display = "none";
+  }
 
-  groupsDashboard.style.display = "none";
-
-  quizContent.style.display = "none";
-
-  screen.style.display = "block";
+  if (screen) {
+    screen.style.display = "block";
+  }
 
 }
 
 function generateGroups() { 
+
+   if (!groupsContainer) {
+    console.warn("groupsContainer not found");
+    return;
+  }
+
 // Vider le container 
 groupsContainer.innerHTML = ""; 
 
@@ -352,7 +428,7 @@ quizProgressBar.style.width =
 
     // إضافة الزر داخل الصفحة
 
-    choicesElement.appendChild(button);
+  /*  choicesElement.appendChild(button);
 
  });
 
@@ -387,86 +463,19 @@ function shuffleArray(array) {
 
 }
 
+
 // ===================================
 // Démarrage du Quiz
 // ===================================
 
-startButton.addEventListener("click",function () {
-
-  // Récupération des valeurs
-
-  const username = usernameInput.value.trim();
-
-  const userclass = userclassInput.value.trim();
-
-
-  // ===================================
-  // Vérification des champs
-  // ===================================
-
-  if (username === "" || userclass === "") {
-
-    alert("Veuillez remplir tous les champs");
-
-    return;
-
-  }
-
-
-  // ===================================
-  // Sauvegarde locale
-  // ===================================
-
-  localStorage.setItem("username", username);
-
-  localStorage.setItem("userclass", userclass);
-
-
-  // ===================================
-  // Gestion des visites
-  // ===================================
-
-  let visits = localStorage.getItem("visits");
-
-  if (visits === null) {
-
-    visits = 1;
-
-  } else {
-
-    visits = Number(visits) + 1;
-
-  }
-
-  localStorage.setItem("visits", visits);
-
-
-  // ===================================
-  // Masquer le formulaire
-  // ===================================
-
-  userForm.style.display = "none";
-
-
-// ===================================
-// Afficher dashboard
-// ===================================
-
-showScreen(groupsDashboard);
-
-// Générer les groupes
-
-generateGroups();
-
-
-});
 
 
 // =================================== 
 //  Retour dashboard 
 // =================================== 
  
-backDashboardBtn.addEventListener( "click", function () { 
+if(backDashboardBtn) {
+  backDashboardBtn.addEventListener( "click", function () { 
   
   showScreen(groupsDashboard);
 
@@ -474,12 +483,13 @@ backDashboardBtn.addEventListener( "click", function () {
 
 generateGroups();
  } );
-
+}
 // ===============================
 // زر السؤال التالي
 // ===============================
 
-nextButton.addEventListener("click", function () {
+if(nextButton) {
+  nextButton.addEventListener("click", function () {
 
   // الانتقال للسؤال التالي
 
@@ -570,3 +580,52 @@ if (
   }
 
 });
+}
+document.addEventListener(
+  "DOMContentLoaded",
+  function () {
+
+    // Vérification utilisateur
+
+    if (
+      storedUsername &&
+      storedUserclass
+    ) {
+
+      // =====================
+      // INDEX
+      // =====================
+
+      if (startLayer) {
+
+        startLayer.style.display =
+        "none";
+
+      }
+
+      if (dashboardLayer) {
+
+        dashboardLayer.style.display =
+        "block";
+
+      }
+
+      // =====================
+      // QUIZ
+      // =====================
+
+      if (
+        groupsDashboard &&
+        groupsContainer
+      ) {
+
+        generateGroups();
+
+        showScreen(groupsDashboard);
+
+      }
+
+    }
+
+  }
+);*/

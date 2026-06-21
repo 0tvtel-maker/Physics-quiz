@@ -1,0 +1,341 @@
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap');
+
+        /* Réinitialisation et optimisations tactiles pour iOS Safari, WhatsApp & Android */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            padding: 20px 10px;
+            color: #1e293b;
+            touch-action: manipulation;
+        }
+
+        header {
+            margin: auto;
+            max-width: 600px;
+            text-align: center;
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.05);
+        }
+
+        h1 {
+            color: #1e40af;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            color: #3b82f6;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 2px;
+        }
+
+        .workspace {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cartes de sections */
+        .category-block {
+            background: white;
+            border-radius: 22px;
+            padding: 15px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* details/summary natifs */
+        details {
+            display: block;
+            width: 100%;
+        }
+
+        summary {
+            list-style: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 18px;
+            background: #f1f5f9;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            color: #1e3a8a;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary:active {
+            transform: scale(0.97);
+            background: #bae6fd;
+            border-color: #3b82f6;
+        }
+
+        summary::before {
+            content: "▶";
+            font-size: 0.8rem;
+            color: #3b82f6;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        details[open] > summary::before {
+            transform: rotate(90deg);
+        }
+
+        /* Titre racine */
+        .main-category > summary {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .main-category > summary::before {
+            color: white;
+        }
+
+        /* Lignes de liaisons de l'arbre */
+        .sub-tree-list {
+            list-style: none;
+            border-left: 3px solid #60a5fa;
+            padding-left: 15px;
+            margin: 10px 0 5px 8px;
+        }
+
+        .sub-tree-item {
+            margin: 12px 0;
+            position: relative;
+        }
+
+        .sub-tree-item::before {
+            content: "";
+            position: absolute;
+            left: -15px;
+            top: 22px;
+            width: 15px;
+            height: 3px;
+            background: #60a5fa;
+        }
+
+        /* Élimination des lignes pour les sous-sous-titres */
+        .sub-tree-list .sub-tree-list {
+            border-left: none;
+            padding-left: 5px;
+            margin-left: 0;
+        }
+
+        .sub-tree-list .sub-tree-list .sub-tree-item::before {
+            display: none;
+        }
+
+        /* Couleur verte */
+        .sub-tree-list .sub-tree-list summary {
+            background: #f0fdf4;
+            border-color: #86efac;
+            color: #166534;
+        }
+        .sub-tree-list .sub-tree-list summary:active {
+            background: #dcfce7;
+            border-color: #22c55e;
+        }
+        .sub-tree-list .sub-tree-list summary::before {
+            color: #10b981;
+        }
+
+        /* Couleur grise */
+        .sub-tree-list .sub-tree-list .sub-tree-list summary {
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #475569;
+        }
+        .sub-tree-list .sub-tree-list .sub-tree-list summary:active {
+            background: #e2e8f0;
+            border-color: #94a3b8;
+        }
+        .sub-tree-list .sub-tree-list .sub-tree-list summary::before {
+            color: #64748b;
+        }
+
+        /* Exemples concrets (violet) */
+        .example-node > summary {
+            background: #faf5ff !important;
+            border-color: #c084fc !important;
+            color: #6b21a8 !important;
+        }
+        .example-node > summary::before {
+            color: #a855f7 !important;
+        }
+
+        /* Boîtes de détails finaux */
+        .details-box {
+            background: #f8fafc;
+            border-left: 5px solid #10b981;
+            border-radius: 0 14px 14px 0;
+            padding: 14px 8px;
+            margin: 8px 0 8px 5px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            line-height: 1.5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            user-select: text;
+            -webkit-user-select: text;
+        }
+
+        /* Formules mathématiques */
+        .math-fraction-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #fffbeb;
+            border: 2px solid #f59e0b;
+            padding: 8px 4px;
+            border-radius: 12px;
+            font-weight: 800;
+            color: #b45309;
+            margin: 4px 0;
+            font-size: 1.05rem;
+        }
+
+        .fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            vertical-align: middle;
+            padding: 0 6px;
+        }
+
+        .numerator {
+            border-bottom: 2px solid #b45309;
+            padding-bottom: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .denominator {
+            padding-top: 2px;
+            text-align: center;
+            width: 100%;
+        }
+
+        sub {
+            font-size: 0.6em;
+            vertical-align: sub;
+        }
+
+        .vector {
+            position: relative;
+            display: inline-block;
+        }
+        .vector::after {
+            content: "→";
+            position: absolute;
+            top: -0.55em;
+            left: 0;
+            font-size: 0.55em;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            margin-right: 4px;
+            margin-bottom: 4px;
+        }
+
+        .unit { color: #0d9488; font-weight: 800; }
+        .important { color: #dc2626; font-weight: 800; }
+
+        /* Styles spécifiques pour le tableau de conversion */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 12px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .recap-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            background: white;
+            text-align: left;
+        }
+
+        .recap-table th, .recap-table td {
+            padding: 8px 10px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .recap-table th {
+            background-color: #e0f2fe;
+            color: #1e3a8a;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .recap-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+/* =================================== */
+/* CHAPTER QUIZ BUTTON */
+/* =================================== */
+
+.chapter-quiz-btn {
+
+  display: inline-block;
+
+  margin-top: 15px;
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+}
+summary h2 {
+
+  display: inline;
+
+  font-size: inherit;
+
+  margin: 0;
+
+}
+footer {
+
+  text-align: center;
+
+  padding: 25px;
+
+  color: #475569;
+
+}

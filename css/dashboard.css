@@ -1,0 +1,316 @@
+/* =================================== */
+/* STYLE GLOBAL */
+/* =================================== */
+
+body {
+
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+
+  background:
+  linear-gradient(
+    135deg,
+    #dbeafe,
+    #bfdbfe
+  );
+
+  min-height: 100vh;
+
+}
+/* =================================== */
+/* HEADER */
+/* =================================== */
+
+header {
+
+   color: #3e4754;
+
+  text-align: center;
+
+  padding: 0px 20px;
+
+}
+
+header h1 {
+
+  margin-bottom: 10px;
+
+}
+
+#welcome-user {
+
+  color: #475569;
+
+}
+
+/* =================================== */
+/* HERO SECTION */
+/* =================================== */
+
+.hero-section {
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  padding: 25px;
+
+  /*background: white;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);*/
+
+}
+
+.hero-section h2 {
+
+  margin-top: 0;
+  color: #1e3a8a;
+
+}
+
+/* =================================== */
+/* GUIDE SECTION */
+/* =================================== */
+
+.guide-section {
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  padding: 25px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+}
+
+.guide-section ol {
+
+  padding-left: 20px;
+
+}
+
+/* =================================== */
+/* DASHBOARD SECTION */
+/* =================================== */
+
+.dashboard-section {
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  padding: 25px;
+
+  background: white;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+}
+
+/* =================================== */
+/* DASHBOARD TOP */
+/* =================================== */
+
+.dashboard-top {
+
+  max-width: 900px;
+
+  margin: 20px auto;
+
+  display: flex;
+
+  gap: 20px;
+
+  align-items: stretch;
+
+
+}
+
+/* =================================== */
+/* USER INFO */
+/* =================================== */
+
+.user-info {
+
+  flex: 1;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+}
+
+/* =================================== */
+/* PROGRESS INFO */
+/* =================================== */
+
+.progress-info {
+
+  flex: 1;
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+}
+
+/* =================================== */
+/* MATIÈRES */
+/* =================================== */
+
+.subjects-container {
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 20px;
+
+  justify-content: center;
+
+}
+/* =================================== */
+/* SUBJECT CARD */
+/* =================================== */
+
+.subject-card {
+
+  width: 220px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  background: #2563eb;
+
+  color: white;
+
+  border-radius: 14px;
+
+  transition: 0.3s;
+
+}
+
+.subject-card:hover {
+
+  transform: translateY(-4px);
+
+}
+
+/* =================================== */
+/* USER PANEL */
+/* =================================== */
+
+/*.user-info {
+
+  background: white;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  box-shadow:
+  0 10px 25px
+  rgba(0,0,0,.08);
+
+}
+
+.user-info h2 {
+
+  margin-bottom: 8px;
+
+}*/
+
+/* =================================== */
+/* PROGRESSION */
+/* =================================== */
+
+.progress-bar-container {
+
+  height: 20px;
+
+  background: #e5e7eb;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+
+}
+
+.progress-bar {
+
+  width: 0%;
+
+  height: 100%;
+
+  background: #22c55e;
+
+  transition: .5s;
+
+}
+
+/* =================================== */
+/* LOCKED */
+/* =================================== */
+
+.locked {
+
+  background: #94a3b8;
+
+  cursor: not-allowed;
+
+}
+
+/* =================================== */
+/* FOOTER */
+/* =================================== */
+
+footer {
+
+  text-align: center;
+
+  padding: 25px;
+
+  color: #475569;
+
+}
+
+@media (max-width: 768px) {
+
+  .dashboard-top {
+
+    flex-direction: column;
+
+  }
+
+}

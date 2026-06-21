@@ -1,0 +1,81 @@
+/* ===================================
+   TITRE
+=================================== */
+
+h1 {
+
+  text-align: center;
+
+  color: #1e3a8a;
+
+  margin-bottom: 30px;
+
+  margin-top: 0;
+
+  font-size: 2rem;
+
+}
+
+/* ===================================
+   STYLE GLOBAL
+=================================== */
+
+body {
+
+  font-family: Arial, sans-serif;
+
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+
+  margin: 0;
+
+  padding: 20px;
+
+  display: block ;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+}
+
+/* =================================== */
+/* NAVIGATION */
+/* =================================== */
+
+.main-nav {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  padding: 20px;
+
+}
+
+.main-nav a {
+
+  text-decoration: none;
+
+  font-weight: bold;
+
+}
+
+/* =================================== */
+/* FOOTER */
+/* =================================== */
+
+.main-footer {
+
+  text-align: center;
+
+  padding: 30px 20px;
+
+  margin-top: 40px;
+
+}
