@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../assets/favicon.ico">
+  <title>Quiz Physique 3AC Maroc</title>
+  <meta name="description" content="
+   Quiz interactif de physique 3AC Maroc avec progression par niveaux. Pour mieux préparer l'examen régional">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/quiz.css">
+</head>
+
+<body>
+<!-- =================================== -->
+<!-- NAVIGATION -->
+<!-- =================================== -->
+
+ <header class="subject-header">
+
+  <a href="index.html"  class="back-btn">
+
+    ← Physique
+
+  </a>
+
+  <h1 class="page-title"> Quiz </h1>
+
+</header>
+  <div class="quiz-container">
+
+    <h1>Quiz Physique 3AC</h1>
+    
+    <!-- ========================= -->
+    <!-- Dashboard des Groupes -->
+    <!-- ========================= -->
+
+     <div id="groups-dashboard">
+
+      <h2>Choisissez un niveau</h2>
+
+      <!-- ========================= --> 
+      <!-- Progression Générale --> 
+      <!-- ========================= -->
+       
+       <div id="progress-section"> 
+        <p id="progress-text"> Progression : 0% </p>
+        
+        <div id="progress-bar-container"> 
+          <div id="progress-bar"></div> 
+        </div> 
+
+        <p id="global-score"> Score global : 0 </p>
+
+      </div>
+      <div id="groups-container"> </div>
+    </div>
+
+    <!-- ===================================
+     QUIZ CONTENT
+    =================================== -->
+
+    <div id="quiz-content" style="display:none;">
+
+      <div id="quiz-progress-container">
+
+        <div id="quiz-progress-bar">
+
+          <span id="question-counter"> 1 / 10 </span>
+       </div>
+
+      </div>
+
+      <div id="question"></div>
+
+      <div id="choices"></div>
+
+      <button id="next-btn">
+      Question suivante
+      </button>
+
+      <div id="score"></div>
+
+      <button id="back-dashboard-btn"> 
+        
+        ←
+
+       </button>
+      
+    </div>
+
+  </div>
+
+   <footer>
+
+      <p>Plateforme Éducative 3AC Maroc</p>
+
+      <p>Résumés • Quiz • Progression</p>
+
+    <footer/>
+
+  <script src="data/questions.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <script>
+      document.addEventListener(
+       "DOMContentLoaded", () => { Auth.requireAuth(); }
+        );
+
+  </script>
+
+  <script src="../js/progress.js"></script>
+  <script src="../js/quiz-engine.js"></script>
+   
+   
+   
+
+</body>
+</html>

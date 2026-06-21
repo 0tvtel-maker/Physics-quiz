@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+   <head>
+
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>Physique 3AC Maroc</title>
+     <link rel="icon" href="../assets/favicon.ico">
+      <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/subject.css">
+
+   </head>
+
+<body>
+
+     <header class="subject-header">
+
+       <a href="../dashboard.html" class="back-btn">
+
+           ← Accueil
+
+       </a>
+
+     <h1 class="page-title"> Physique 3AC </h1>
+
+              <p class="subject-description">
+
+          Cours, résumés et quiz interactifs
+          pour maîtriser le programme de physique.
+
+         </p>
+
+         <p>Choisissez un semestre</p>
+
+     </header>
+
+ <main>
+
+   <section class="dashboard-section">
+
+     <h2>Semestres</h2>
+
+     <div class="subjects-container">
+
+        <div class="subject-card locked">
+
+             <h3> Semestre 1</h3>
+
+                 <p>🔒 Bientôt disponible </p>
+
+         </div>
+         <div class="semester-block">
+
+            <h3>📗 Semestre 2</h3>
+
+                <div class="subjects-container">
+
+                   <a href="resume.html" class="subject-card">
+
+                     <h4>📗 Résumé</h4>
+
+                      <p>Résumés complets</p>
+
+                     </a>
+
+                   <a href="quiz.html" class="subject-card">
+
+                            <h4>📝 Quiz</h4>
+
+                              <p>Questions progressives</p>
+
+                    </a>
+
+               </div>
+
+           </div>
+     </div>
+
+   </section>
+
+ </main>
+
+<footer>
+
+  <p>Plateforme Éducative 3AC Maroc</p>
+
+  <p>Résumés • Quiz • Progression</p>
+
+</footer>
+
+<script src="../js/auth.js"></script>
+
+<script> document.addEventListener(
+  "DOMContentLoaded",
+  () => { Auth.requireAuth(); } );
+
+</script>
+
+</body>
+
+</html>
