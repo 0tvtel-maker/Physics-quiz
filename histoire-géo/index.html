@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+   <head>
+
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>Histoire-Géo 3AC Maroc</title>
+     <link rel="icon" href="../assets/favicon.ico">
+      <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/subject.css">
+
+   </head>
+
+<body>
+
+     <header class="subject-header">
+
+       <a href="../dashboard.html" class="back-btn">
+
+           ← Accueil
+
+       </a>
+
+     <h1 class="page-title"> Histoire-Géo 3AC </h1>
+
+              <p class="subject-description">
+
+          Cours, résumés et quiz interactifs
+          pour maîtriser le programme de l'histoire-géo 3AC.
+
+         </p>
+
+         <p>Choisissez un semestre</p>
+
+     </header>
+
+ <main>
+
+   <section class="dashboard-section">
+
+     <h2>Semestres</h2>
+
+     <div class="subjects-container">
+
+        <div class="subject-card locked">
+
+             <h3> Semestre 1</h3>
+
+                 <p>🔒 Bientôt disponible </p>
+
+         </div>
+         <div class="semester-block">
+
+            <h3>📗 Semestre 2</h3>
+
+                <div class="subjects-container">
+
+                   <a href="#" class="subject-card locked">
+
+                     <h4>📗 Résumé</h4>
+
+                      <p>🔒 Bientôt disponible</p>
+
+                       </a>
+
+                       <a href="quiz.html?subject=histoire" class="subject-card">
+
+                            <h3>📜 Histoire</h3>
+                             <p> Quiz d'histoire </p>
+
+                        </a>
+
+                       <a href="quiz.html?subject=geographie" class="subject-card">
+
+                            <h3>🌍 Géographie</h3>
+                              <p>Quiz de géographie</p>
+
+                        </a>
+
+                        <a href="quiz.html?subject=citoyennete" class="subject-card">
+
+                            <h3>🤝 Citoyenneté</h3>
+
+                            <p>Quiz d'éducation à la citoyenneté</p>
+
+                         </a>
+
+               </div>
+
+           </div>
+     </div>
+
+   </section>
+
+ </main>
+
+<footer>
+
+  <p>Plateforme Éducative 3AC Maroc</p>
+
+  <p>Résumés • Quiz • Progression</p>
+
+</footer>
+
+<script src="../js/auth.js"></script>
+
+<script> document.addEventListener(
+  "DOMContentLoaded",
+  () => { Auth.requireAuth(); } );
+
+</script>
+
+</body>
+
+</html>

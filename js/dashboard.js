@@ -6,7 +6,7 @@ const Dashboard = {
     { title: "Physique", href: "physique/index.html", unlocked: true },
     { title: "Mathématiques", href: "maths/index.html", unlocked: false },
     { title: "SVT", href: "svt/index.html", unlocked: false },
-    { title: "Histoire-Géo", href: "histoire/index.html", unlocked: false },
+    { title: "Histoire-Géo", href: "histoire-géo/index.html", unlocked: true },
   ],
 
   init() {
@@ -55,6 +55,7 @@ if (classDisplay) {
     if (!this.subjectsContainer) return;
 
     this.subjectsContainer.innerHTML = "";
+    console.log(this.subjects);
     this.subjects.forEach((subject) => {
       const card = document.createElement("a");
       card.className = "subject-card";
