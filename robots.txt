@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://0tvtel-maker.github.io/Physics-quiz/sitemap.xml
