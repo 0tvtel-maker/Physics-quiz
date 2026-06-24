@@ -1,37 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/physique/index.html</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/physique/quiz.html</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/physique/resume.html</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/histoire-geo/index.html</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/histoire-geo/quiz.html?subject=histoire</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/histoire-geo/quiz.html?subject=geographie</loc>
   </url>
-
   <url>
     <loc>https://0tvtel-maker.github.io/Physics-quiz/histoire-geo/quiz.html?subject=citoyennete</loc>
   </url>
-
 </urlset>
