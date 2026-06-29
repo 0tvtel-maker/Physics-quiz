@@ -131,8 +131,19 @@
 </script>
   <script src="../js/progress.js"></script>
   <script src="../js/quiz-engine.js"></script>
-       <script>
+  <script src="../js/quiz-api.js"></script>
 
+  <script>
+   document.addEventListener( "DOMContentLoaded", () => {
+
+    QuizAPI.start({ subject: window.currentSubject,
+
+      questions: questions });
+   }
+  );
+  </script>
+  
+    <script>
          const title = document.getElementById(
              "quiz-subject-title" );
 
@@ -140,7 +151,7 @@
 
               switch( window.currentSubject){
 
-              case "histoire": title.textContent = "📜 Histoire";
+               case "histoire": title.textContent = "📜 Histoire";
                 break;
 
                case "geographie": title.textContent = "🌍 Géographie";
@@ -149,11 +160,10 @@
                case "citoyennete": title.textContent = "🤝 Citoyenneté";
                     break;
 
-  }
+              }
 
-}
-
-</script>
+      }
+    </script>
 
 </body>
 </html>

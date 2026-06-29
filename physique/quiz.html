@@ -111,10 +111,21 @@
   </script>
 
   <script src="../js/progress.js"></script>
+  <script>window.currentSubject = "physique";</script>
   <script src="../js/quiz-engine.js"></script>
-   
-   
-   
+  <script src="../js/quiz-api.js"></script>
+  <script>
 
+document.addEventListener( "DOMContentLoaded", () => {
+
+    QuizAPI.start({
+
+      subject: "physique",
+
+      questions: questions });
+  }
+);
+
+</script>
 </body>
 </html>

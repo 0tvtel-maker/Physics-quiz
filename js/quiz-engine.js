@@ -2,6 +2,7 @@
 // Moteur du Quiz - Logique principale
 // ====================================
 
+
 const Quiz = {
   // Éléments du DOM
   questionElement: document.getElementById("question"),
@@ -24,7 +25,9 @@ const Quiz = {
    progressText: document.getElementById( "progress-text" ),
    progressBar: document.getElementById( "progress-bar" ),
 
-globalScore: document.getElementById( "global-score" ),
+  globalScore: document.getElementById( "global-score" ),
+
+  subject: window.currentSubject,
 
   // État du quiz
   currentQuestion: 0,
@@ -32,7 +35,7 @@ globalScore: document.getElementById( "global-score" ),
   currentQuestions: [],
   playedGroup: 1,
 
-  unlockedGroup: Number( localStorage.getItem( "unlockedGroup" ) ) || 1,
+  unlockedGroup: 1,
 
   TEXT: {
 
@@ -44,9 +47,11 @@ globalScore: document.getElementById( "global-score" ),
 
 },
 
-//================ Initialisation ===========
+ //================ Initialisation ===========
 
   init() {
+
+    this.unlockedGroup = Progress.getUnlockedGroup( this.subject );
 
     // Vérification : les questions sont-elles chargées ?
 
@@ -378,17 +383,16 @@ finish() {
 // ====================================
    let unlockMessage = "";
 
-if ( this.score >= 7 && this.playedGroup >= this.unlockedGroup ) {
+  if (this.score >= 7 && this.playedGroup >= this.unlockedGroup) {
 
   this.unlockedGroup++;
 
-  localStorage.setItem( "unlockedGroup", this.unlockedGroup );
+  Progress.saveUnlockedGroup( this.subject, this.unlockedGroup );
 
-   unlockMessage = "<br>🔓 Nouveau groupe débloqué !<br>";
-
-
+  unlockMessage = "<br>🔓 Nouveau groupe débloqué !<br>";
 
 }
+
 this.scoreElement.style.display = "block";
    message += unlockMessage;
     // Afficher le résultat
@@ -420,7 +424,7 @@ updateProgress() {
 
   // Score global
 
-  const scores = JSON.parse( localStorage.getItem( "groupScores" ) || "{}" );
+  const scores = Progress.getGroupScores( this.subject );
 
   let total = 0;
 
@@ -440,14 +444,20 @@ updateProgress() {
   // Sauvegarder le score
   // ====================================
 saveScore() {
-    try {
-      const groupScores = JSON.parse(localStorage.getItem("groupScores") || "{}");
-      groupScores[this.playedGroup] = this.score;
-      localStorage.setItem("groupScores", JSON.stringify(groupScores));
-    } catch (e) {
-      console.warn("⚠️ Erreur lors de la sauvegarde du score", e);
-    }
-  },
+
+  try {
+
+    Progress.saveGroupScore(this.subject, this.playedGroup, this.score);
+
+  }
+
+  catch (e) {
+
+    console.warn("⚠️ Erreur lors de la sauvegarde du score",e);
+
+  }
+
+},
 
 //================== Utilitaires =================
   // ====================================
@@ -461,16 +471,3 @@ saveScore() {
     }
   }
 };
-
-// ====================================
-// Lancer le quiz au chargement
-// ====================================
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", () => {
-
-    Quiz.init();
-  });
-} else {
-
-  Quiz.init();
-}
